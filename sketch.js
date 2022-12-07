@@ -5,7 +5,7 @@ function preload() {
 function setup() {
   createCanvas(500, 500);
 
-  background("pink");
+  background("yellow");
 
 }
 
@@ -18,8 +18,8 @@ let language = "en";
 let sentence = "";
 let language_to = "fr";
 
-async function translate(source_text, target_language) {
-  const endpoint = `${translate_api_endpoint}/translate?api-version=${translate_version}&to=${target_language}`; // Constructing the URL to send to
+async function microsoft_translate(source_text, source_language, target_language) {
+  const endpoint = `${translate_api_endpoint}/translate?api-version=${translate_version}&from=${source_language}&to=${target_language}`; // Constructing the URL to send to
   const data_body = [{'text': source_text}]; // Constructing the data to be sent
   const response = await fetch(endpoint, {
     method: 'POST', // We will use POST to send this data to the end point
@@ -40,12 +40,12 @@ function draw() {
 }
 
 function mouseClicked() {
-  //language = prompt("Enter starting language:");
+  language = prompt("Enter starting language:");
   sentence = prompt("Enter sentence to translate:");
   language_to = prompt("Enter language to translate to:");
 
-  translate(sentence, language_to).then((data) => {
+  microsoft_translate(sentence, language, language_to).then((data) => {
     const result = data[0]['translations'][0]['text'];
-    console.log(result);
+    alert(result);
   });
 }
