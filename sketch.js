@@ -54,6 +54,7 @@ function setup() {
   button = createImg('./assets/circle.png').size(200, 200);
   button.position(width/2 - 100, height/2.5);
   button.style('user-select', 'none');
+  button.style('-webkit-touch-callout', 'none');
 
   button.mousePressed(lis);
   button.touchStarted(lis);
