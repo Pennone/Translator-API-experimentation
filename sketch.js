@@ -53,6 +53,7 @@ function setup() {
   button.position(width/2 - 100, height/2.5);
 
   button.mousePressed(lis);
+  button.touchStarted(lis);
 
 }
 
@@ -121,6 +122,14 @@ function transl(sentence) {
 }
 
 function mouseReleased() {
+
+  if (pressing == true){
+    pressing = false;
+  }
+
+}
+
+function touchEnded() {
 
   if (pressing == true){
     pressing = false;
