@@ -1,8 +1,13 @@
-function preload() {
+let circle;
+let myfont;
 
+function preload() {
+myfont = loadFont('./assets/Unbounded-VariableFont_wght.ttf');
 }
 
 const circle_color = "#d1893b";
+
+let testo = "Hold the button!";
 
 const translate_api_endpoint = "https://api.cognitive.microsofttranslator.com";
 let translate_api_key = prompt("Enter your API key:");
@@ -31,19 +36,19 @@ async function microsoft_translate(source_text, source_language, target_language
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(250, 500);
 
   background("#7ec4c4");
 
   textAlign(CENTER);
+  textFont(myfont);
 
-  let div = createDiv('Hello ').size(100, 100);
-  div.html('World', true);
-  div.position(width/2 - 50, height/2);
+  text(testo, width/2, height/3);
 
-  let div2 = createDiv('Hi! ').size(100, 100);
-  div2.position(width/2 - 50, height/2 + 50);
-  div.mouseClicked(transl);
+  let button = createDiv('Hi! ').size(100, 100);
+  button.position(width/2 - 50, height/2 + 50);
+
+  button.mouseClicked(transl);
 
 }
 
