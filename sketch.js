@@ -1,19 +1,21 @@
 let circle;
 let myfont;
 
-let listening = false;
-
 function preload() {
+
   myfont = loadFont('./assets/Unbounded-VariableFont_wght.ttf');
   circle = loadImage('./assets/circle.png');
+
 }
+
+let listening = false;
 
 const circle_color = "#d1893b";
 
 let testo = "Hold the button!";
 
 const translate_api_endpoint = "https://api.cognitive.microsofttranslator.com";
-let translate_api_key = prompt("Enter your API key:");
+let translate_api_key = "fabd1ff9c0e94348ab8e9dcbb0c28444";
 const translate_version      = "3.0";
 const translate_region       = "switzerlandnorth";
 
@@ -60,14 +62,14 @@ function draw() {
   if (listening == true) {
     listening = false;
     sentence = new p5.SpeechRec(language, gotSpeech);
-    sentence.start(true);
+    sentence.start();
   }
 
 }
 
 function gotSpeech() {
 
-  console.log(sentence);
+  //console.log(sentence);
 
   if(sentence.resultValue) {
     transl(sentence.resultString);
@@ -94,7 +96,6 @@ function mouseReleased() {
 
   if (listening == true){
     listening = false;
-    
   }
 
 }
