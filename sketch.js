@@ -9,6 +9,8 @@ function preload() {
 let listening = false;
 let pressing = false;
 let count = 0;
+let cool = false;
+let count_cool = 0;
 
 let button;
 
@@ -51,6 +53,7 @@ function setup() {
 
   button = createImg('./assets/circle.png').size(200, 200);
   button.position(width/2 - 100, height/2.5);
+  button.addClass("button");
 
   button.mousePressed(lis);
   button.touchStarted(lis);
@@ -61,7 +64,11 @@ function draw() {
 
   background("#7ec4c4");
 
-  text(testo, width/2, height/3);
+  if (testo == "Hold the button!") {
+    text(testo, width/2 - random(-1, 1), height/3 - random(-1, 1));
+  } else {
+    text(testo, width/2, height/3);
+  }
 
   if (listening == true) {
     listening = false;
@@ -91,6 +98,19 @@ function draw() {
 
   }
 
+  if (cool == true) {
+
+    count_cool ++;
+
+    if (count_cool > 500) {
+
+      count_cool = 0;
+      testo = "Hold the button!";
+      cool = false;
+
+    }
+  }
+
 }
 
 function gotSpeech() {
@@ -118,6 +138,9 @@ function transl(sentence) {
     const result = data[0]['translations'][0]['text'];
     testo = result;
   });
+
+  cool = true;
+  count_cool = 0;
 
 }
 
