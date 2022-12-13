@@ -1,14 +1,16 @@
-let circle;
 let myfont;
 
 function preload() {
 
   myfont = loadFont('./assets/Unbounded-VariableFont_wght.ttf');
-  circle = loadImage('./assets/circle.png');
 
 }
 
 let listening = false;
+let pressing = false;
+let count = 0;
+
+let button;
 
 const circle_color = "#d1893b";
 
@@ -19,9 +21,9 @@ let translate_api_key = "fabd1ff9c0e94348ab8e9dcbb0c28444";
 const translate_version      = "3.0";
 const translate_region       = "switzerlandnorth";
 
-let language = "it";
+let language = prompt("Insert starting language:");
 let sentence = "";
-let language_to = "en";
+let language_to = prompt("Insert language of translation:");
 
 async function microsoft_translate(source_text, source_language, target_language) {
   const endpoint = `${translate_api_endpoint}/translate?api-version=${translate_version}&from=${source_language}&to=${target_language}`; // Constructing the URL to send to
@@ -45,8 +47,9 @@ function setup() {
 
   textAlign(CENTER);
   textFont(myfont);
+  textSize(16);
 
-  let button = createImg('./assets/circle.png').size(200, 200);
+  button = createImg('./assets/circle.png').size(200, 200);
   button.position(width/2 - 100, height/2.5);
 
   button.mousePressed(lis);
@@ -63,6 +66,28 @@ function draw() {
     listening = false;
     sentence = new p5.SpeechRec(language, gotSpeech);
     sentence.start();
+
+  }
+
+  if (pressing == true) {
+
+    count += 0.5;
+    button.size(200 + count, 200 + count);
+    button.position(width/2 - 100 - count/2, height/2.5 - count/2)
+
+    if (count % 25 == 0) {
+
+      button.size(200, 200);
+      button.position(width/2 - 100, height/2.5)
+      count = 0;
+
+    }
+  } else {
+
+    button.size(200, 200);
+    button.position(width/2 - 100, height/2.5)
+    count = 0;
+
   }
 
 }
@@ -70,9 +95,11 @@ function draw() {
 function gotSpeech() {
 
   //console.log(sentence);
+  pressing = false;
 
   if(sentence.resultValue) {
     transl(sentence.resultString);
+    console.log(sentence.resultString);
   }
 
 }
@@ -80,6 +107,7 @@ function gotSpeech() {
 function lis() {
 
   listening = true;
+  pressing = true;
 
 }
 
@@ -94,8 +122,8 @@ function transl(sentence) {
 
 function mouseReleased() {
 
-  if (listening == true){
-    listening = false;
+  if (pressing == true){
+    pressing = false;
   }
 
 }
