@@ -39,7 +39,7 @@ async function microsoft_translate(source_text, source_language, target_language
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(windowWidth, windowHeight);
 
   textAlign(CENTER);
   textFont(myfont);
@@ -47,7 +47,7 @@ function setup() {
   let button = createImg('./assets/circle.png').size(200, 200);
   button.position(width/2 - 100, height/2.5);
 
-  button.mousePressed(lis1);
+  button.mousePressed(lis);
 
 }
 
@@ -58,37 +58,43 @@ function draw() {
   text(testo, width/2, height/3);
 
   if (listening == true) {
+    listening = false;
     sentence = new p5.SpeechRec(language, gotSpeech);
-    sentence.start();
+    sentence.start(true);
   }
+
 }
 
 function gotSpeech() {
 
-  microsoft_translate(sentence, language, language_to).then((data) => {
-    const result = data[0]['translations'][0]['text'];
-    alert(result);
-  });
+  console.log(sentence);
+
+  if(sentence.resultValue) {
+    transl(sentence.resultString);
+  }
 
 }
 
-function lis1() {
+function lis() {
+
   listening = true;
+
 }
 
-function transl() {
-  //language = prompt("Enter starting language:");
-  //sentence = prompt("Enter sentence to translate:");
-  //language_to = prompt("Enter language to translate to:");
+function transl(sentence) {
 
   microsoft_translate(sentence, language, language_to).then((data) => {
     const result = data[0]['translations'][0]['text'];
-    alert(result);
+    testo = result;
   });
+
 }
 
 function mouseReleased() {
+
   if (listening == true){
     listening = false;
+    
   }
+
 }
