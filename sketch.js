@@ -55,6 +55,7 @@ function setup() {
   button.position(width/2 - 100, height/2.5);
   button.style('user-select', 'none');
   button.style('-webkit-touch-callout', 'none');
+  button.style('-webkit-user-select', 'none');
 
   button.mousePressed(lis);
   button.touchStarted(lis);
