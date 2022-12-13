@@ -4,6 +4,8 @@ function preload() {
 
   myfont = loadFont('./assets/Unbounded-VariableFont_wght.ttf');
 
+  //lets not use an image for the final project, idkwhy i thought it would be simpler
+
 }
 
 let listening = false;
