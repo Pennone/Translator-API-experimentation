@@ -1,8 +1,11 @@
 let circle;
 let myfont;
 
+let listening = false;
+
 function preload() {
-myfont = loadFont('./assets/Unbounded-VariableFont_wght.ttf');
+  myfont = loadFont('./assets/Unbounded-VariableFont_wght.ttf');
+  circle = loadImage('./assets/circle.png');
 }
 
 const circle_color = "#d1893b";
@@ -14,9 +17,9 @@ let translate_api_key = prompt("Enter your API key:");
 const translate_version      = "3.0";
 const translate_region       = "switzerlandnorth";
 
-let language = "en";
+let language = "it";
 let sentence = "";
-let language_to = "fr";
+let language_to = "en";
 
 async function microsoft_translate(source_text, source_language, target_language) {
   const endpoint = `${translate_api_endpoint}/translate?api-version=${translate_version}&from=${source_language}&to=${target_language}`; // Constructing the URL to send to
@@ -36,17 +39,15 @@ async function microsoft_translate(source_text, source_language, target_language
 }
 
 function setup() {
-  createCanvas(250, 500);
+  createCanvas(500, 500);
 
   textAlign(CENTER);
   textFont(myfont);
 
-  text(testo, width/2, height/3);
+  let button = createImg('./assets/circle.png').size(200, 200);
+  button.position(width/2 - 100, height/2.5);
 
-  let button = createDiv('Hi! ').size(100, 100);
-  button.position(width/2 - 50, height/2 + 50);
-
-  button.mouseClicked(transl);
+  button.mousePressed(lis1);
 
 }
 
@@ -54,15 +55,40 @@ function draw() {
 
   background("#7ec4c4");
 
+  text(testo, width/2, height/3);
+
+  if (listening == true) {
+    sentence = new p5.SpeechRec(language, gotSpeech);
+    sentence.start();
+  }
 }
 
-function transl() {
-  language = prompt("Enter starting language:");
-  sentence = prompt("Enter sentence to translate:");
-  language_to = prompt("Enter language to translate to:");
+function gotSpeech() {
 
   microsoft_translate(sentence, language, language_to).then((data) => {
     const result = data[0]['translations'][0]['text'];
     alert(result);
   });
+
+}
+
+function lis1() {
+  listening = true;
+}
+
+function transl() {
+  //language = prompt("Enter starting language:");
+  //sentence = prompt("Enter sentence to translate:");
+  //language_to = prompt("Enter language to translate to:");
+
+  microsoft_translate(sentence, language, language_to).then((data) => {
+    const result = data[0]['translations'][0]['text'];
+    alert(result);
+  });
+}
+
+function mouseReleased() {
+  if (listening == true){
+    listening = false;
+  }
 }
