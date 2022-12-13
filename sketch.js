@@ -38,8 +38,6 @@ async function microsoft_translate(source_text, source_language, target_language
 function setup() {
   createCanvas(250, 500);
 
-  background("#7ec4c4");
-
   textAlign(CENTER);
   textFont(myfont);
 
@@ -53,6 +51,8 @@ function setup() {
 }
 
 function draw() {
+
+  background("#7ec4c4");
 
 }
 
