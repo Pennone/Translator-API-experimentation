@@ -2,12 +2,7 @@ function preload() {
 
 }
 
-function setup() {
-  createCanvas(500, 500);
-
-  background("yellow");
-
-}
+const circle_color = "#d1893b";
 
 const translate_api_endpoint = "https://api.cognitive.microsofttranslator.com";
 let translate_api_key = prompt("Enter your API key:");
@@ -35,11 +30,28 @@ async function microsoft_translate(source_text, source_language, target_language
   return response.json(); // parse json response into a javascript object and return
 }
 
+function setup() {
+  createCanvas(500, 500);
+
+  background("#7ec4c4");
+
+  textAlign(CENTER);
+
+  let div = createDiv('Hello ').size(100, 100);
+  div.html('World', true);
+  div.position(width/2 - 50, height/2);
+
+  let div2 = createDiv('Hi! ').size(100, 100);
+  div2.position(width/2 - 50, height/2 + 50);
+  div.mouseClicked(transl);
+
+}
+
 function draw() {
 
 }
 
-function mouseClicked() {
+function transl() {
   language = prompt("Enter starting language:");
   sentence = prompt("Enter sentence to translate:");
   language_to = prompt("Enter language to translate to:");
