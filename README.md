@@ -64,9 +64,9 @@ The project is composed of a single HTML page, in which the various parts are se
 
 **SPEECH RECOGNITION**
 
-[p5 speech ](https://idmnyu.github.io/p5.js-speech/) was implemented for face detection and face recognition. In our specific case, we used the facial expression recognition model. All the code containing the instruction to load the face-api library and detect the faces is cointained in the [script.js](./public/script.js) file.
+[p5 speech ](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition.
 
-The library is able to detect and differentiate between 7 different expressions: happiness, sadness, anger, disgust, surprise, fear and neutral.
+The library is able to detect quite a few languages, even if we only needed english.
 
 **GENERATIVE ART**
 
