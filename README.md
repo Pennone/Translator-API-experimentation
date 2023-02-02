@@ -62,13 +62,13 @@ The project is composed of a single HTML page, in which the various parts are se
 
 **SPEECH RECOGNITION**
 
-[p5 speech ](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition.
+[p5 speech](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition.
 
 The library is able to detect quite a few languages, even if we only needed english.
 
 **TRANSLATOR API**
 
-We implemented [Azure translator API ](https://azure.microsoft.com/it-it/products/cognitive-services/translator) for the process of translating our main phrase.
+We implemented [Azure translator API](https://azure.microsoft.com/it-it/products/cognitive-services/translator) for the process of translating our main phrase.
 
 The implementation is rather short but complicated
 
@@ -86,7 +86,7 @@ and then we use it to translate
 
 **SYNTAX ANALISIS**
 
-To analize and recognize the elements of a phrase, we used [RiTa.js ](https://github.com/dhowe/ritajs), library that allows a great quantity of operations and analysis on a sentence, related to grammar and syntax.
+To analize and recognize the elements of a phrase, we used [RiTa.js](https://github.com/dhowe/ritajs), a library that allows a great quantity of operations and analysis on a sentence, related to grammar and syntax.
 
 The implementation works like this
 
