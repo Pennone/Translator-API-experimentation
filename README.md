@@ -92,6 +92,18 @@ The implementation works like this
 
 **ANIMATIONS**
 
+To show the transformation of the original phrase into a vector, we applied a simple sliding animation, using some rectangles with rounded angles
+
+```JavaScript
+
+```
+
+For the world map animations, we used a sligtly more complex system, mostly just beacuse of the need of keeping track fo the various selected languages
+
+```JavaScript
+
+```
+
 To manage the texts appearing in the various parts of the experience, we implemented a CSS file; both the dissolving transitions in the centre of the screen and the scrolling transitions on the top and the bottom of the page are handled though the [style.css](./public/style.css).
 
 # TEAM
