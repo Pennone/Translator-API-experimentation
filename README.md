@@ -49,7 +49,7 @@ The device will need to have touch functionalities and a microphone of course, b
 
 # STRUCTURE
 
-![scheme](./assets/readme/schema.png)
+![scheme](./assets/readme/struttura.png)
 
 The project is composed of a single HTML page, in which the various parts are set to go off based on timers and the interaction of the user with a button and some drop-down menus.
 
