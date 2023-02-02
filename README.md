@@ -49,7 +49,7 @@ The device will need to have touch functionalities and a microphone of course, b
 
 # STRUCTURE
 
-![scheme](./assets-readme/schema.png)
+![scheme](./assets/readme/schema.png)
 
 The project is composed of a single HTML page, in which the various parts are set to go off based on timers and the interaction of the user with a button and some drop-down menus.
 
@@ -73,67 +73,13 @@ We implemented [Azure translator API ](https://azure.microsoft.com/it-it/product
 The implementation is rather short but complicated
 
 ```JavaScript
-class Organic {
-  constructor(id, radius, pos, roughness, angle, color) {
-  this.id = id;
-  this.radius = radius; //radius of blob
-  this.pos = pos;
-  this.roughness = roughness; //magnitude of distortion
-  this.angle = angle; //angle of rotation
-  this.color = color; //color of the blob
-  this.xSpeed = 1;
-  this.ySpeed = 1;
-}
+
 ```
 
 and then we use it to translate
 
 ```JavaScript
-class Blob {
-  constructor(id, x, y) {
-    this.id = id;
-    this.pos = createVector(x, y);
-    this.startPosition = createVector(x, y);
-    this.grown = false;
-    this.vel = createVector();
-    this.acc = createVector();
-    this.organics = [];
-    this.n_blobs = 10;
-    this.createOrganics();
-    this.change = 0;
 
-    this.intensity = 0;
-    this.expressions = { prev: "neutral", next: "neutral" };
-    this.properties = {
-      color: color(89, 84, 87),
-      changeIncrement: 0,
-      offset: 0,
-    };
-
-    this.prevProp = {};
-    this.nextProp = {};
-
-    this.expressionList = {};
-
-    this.neutral = false;
-    this.change = 0;
-    this.transition = false;
-  }
-
-  createOrganics() {
-    for (let i = 0; i < this.n_blobs; i++) {
-      this.organics.push(
-        new Organic(
-          i,
-          10,
-          this.pos,
-          i * 10,
-          i * random(90),
-          expressions_properties.neutral.color
-        )
-      );
-    }
-  }
 ```
 
 ![](./assets-readme/blob_avvicinano.gif)
