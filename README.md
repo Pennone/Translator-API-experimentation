@@ -14,15 +14,13 @@
 
 ## 3. [CODE](#code)
 
-### a. Face recognition
+### a. Speech recognition
 
-### b. Generative art
+### b. Translator API
 
-### c. Style
+### c. Syntax analysis
 
-### d. Challenges
-
-### e. References and tutorials
+### d. Animations
 
 ## 4. [TEAM](#team)
 
@@ -153,6 +151,12 @@ To manage the texts appearing in the various parts of the experience, we impleme
 # TEAM
 
 Marta Piatti
+
+Martina Previti
+
+Zhang Huaije
+
+Fatemeh Maher
 
 
 **COURSE**
