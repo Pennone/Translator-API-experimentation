@@ -24,7 +24,7 @@
 
 ## 4. [TEAM](#team)
 
-![](./assets/readme/title.png)
+![](./assets/readme/title_2.png)
 
 # PROJECT IDEA
 
