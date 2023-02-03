@@ -73,14 +73,43 @@ We implemented [Azure translator API](https://azure.microsoft.com/it-it/products
 The implementation is rather short but complicated
 
 ```JavaScript
+const translate_api_endpoint = "https://api.cognitive.microsofttranslator.com";
+let translate_api_key = "fabd1ff9c0e94348ab8e9dcbb0c28444";
+const translate_version      = "3.0";
+const translate_region       = "switzerlandnorth";
 
+let sentence = "What the hell man?";
+
+async function microsoft_translate(source_text, source_language, target_language) { //using an asyncronous function, that will request the data and wait for it to be sent back
+  const endpoint = `${translate_api_endpoint}/translate?api-version=${translate_version}&from=${source_language}&to=${target_language}`; // Constructing the URL to send to
+  const data_body = [{'text': source_text}]; // Constructing the data to be sent
+  const response = await fetch(endpoint, {
+    method: 'POST', // We will use POST to send this data to the end point
+    mode: 'cors', // CORS is a security feature that only allows requests to/from the same site, in this case because we're sending data to an external site we will turn it off
+    cache: 'no-cache', // We will disable caching so that we will always get the "fresh" response from the server
+    headers: {
+      'Content-Type': 'application/json',
+      'Ocp-Apim-Subscription-Key': translate_api_key,
+      'Ocp-Apim-Subscription-Region': translate_region
+    },
+    body: JSON.stringify(data_body)
+  });
+  return response.json(); // parse json response into a javascript object and return
+}
 ```
 
-and then we use it to translate
+and then we used
 
 ```JavaScript
-
+microsoft_translate(sentence, starting_lang, lang_to_translate_to).then((data) => {
+    result = data[0]['translations'][0]['text'];
+    console.log(result);
+});
 ```
+
+to translate.
+
+We couldnt name the function "translate()" using instead "microsoft_translate()" to avoid conflict with the preexisting p5js function.
 
 ![](./assets-readme/blob_avvicinano.gif)
 
@@ -88,7 +117,23 @@ and then we use it to translate
 
 To analize and recognize the elements of a phrase, we used [RiTa.js](https://github.com/dhowe/ritajs), a library that allows a great quantity of operations and analysis on a sentence, related to grammar and syntax.
 
-The implementation works like this
+We downloaded the library
+
+```HTML
+<head>
+
+    <script src="libraries/rita.js"></script>
+
+  </head>
+```
+
+and used the function
+
+```JavaScript
+let words = RiTa.pos(phrase);
+```
+
+to analyze the syntaxis.
 
 **ANIMATIONS**
 
