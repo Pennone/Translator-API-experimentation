@@ -74,7 +74,7 @@ let translate_api_key = "fabd1ff9c0e94348ab8e9dcbb0c28444";
 const translate_version      = "3.0";
 const translate_region       = "switzerlandnorth";
 
-let sentence = "What the hell man?";
+let sentence = "Phrase we need to translate";
 
 async function microsoft_translate(source_text, source_language, target_language) { //using an asyncronous function, that will request the data and wait for it to be sent back
   const endpoint = `${translate_api_endpoint}/translate?api-version=${translate_version}&from=${source_language}&to=${target_language}`; // Constructing the URL to send to
