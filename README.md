@@ -158,7 +158,7 @@ For the world map animations, we used a sligtly more complex system, mostly just
 
 ```
 
-To give the selection menus and buttons a certain style, we implemented a [CSS file](./main/style.css).
+To give the selection menus and buttons a certain style, we implemented a [CSS file](./style.css).
 
 # TEAM
 
