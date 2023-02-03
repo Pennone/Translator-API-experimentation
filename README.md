@@ -92,7 +92,7 @@ async function microsoft_translate(source_text, source_language, target_language
 }
 ```
 
-and then we used
+The process of translating works like this
 
 ```JavaScript
 microsoft_translate(sentence, starting_lang, lang_to_translate_to).then((data) => {
@@ -101,27 +101,17 @@ microsoft_translate(sentence, starting_lang, lang_to_translate_to).then((data) =
 });
 ```
 
-to translate.
-
 We couldnt name the function "translate()" using instead "microsoft_translate()" to avoid conflict with the preexisting p5js function.
 
 ![](./assets-readme/blob_avvicinano.gif)
 
 **SPEECH RECOGNITION**
 
-[p5 speech](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition.
-
-The library is able to detect quite a few languages, even if we only needed english.
-
-We used the function
-
-```JavaScript
-let words = RiTa.pos(phrase);
-```
+[p5 speech](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition; the library has a lot of different functionalities, however we only needed that;
 
 **SYNTAX ANALISIS**
 
-To analize and recognize the elements of a phrase, we used [RiTa.js](https://github.com/dhowe/ritajs), a library that allows a great quantity of operations and analysis on a sentence.
+To analize and recognize the elements of a phrase, we used [RiTa.js](https://github.com/dhowe/ritajs), a library that allows a great quantity of analysis on sentences.
 
 We were mainly interested in the function
 
@@ -136,11 +126,11 @@ This is how the two libraries work together
     if (frame == 3 && control == false) {
       control = true;
       clicked = true;
-      sketch.speechRec.start();
+      sketch.speechRec.start(); //The recording starts
     }
   };
 
-  sketch.gotSpeech = function () {
+  sketch.gotSpeech = function () { //Once it ends, we check the phrase's length and start the analysis
     if (sketch.speechRec.resultValue) {
       let said = sketch.speechRec.resultString;
       if (said.length <= 7) {
@@ -148,14 +138,11 @@ This is how the two libraries work together
       } else {
         phrase = said.split(" ").splice(0, 7).join(" ");
       }
-      console.log(phrase);
       analysis = RiTa.pos(phrase);
       clicked = false;
-      console.log(analysis);
     }
+  }
 ```
-
-to analyze the syntaxis.
 
 **ANIMATIONS**
 
@@ -171,7 +158,7 @@ For the world map animations, we used a sligtly more complex system, mostly just
 
 ```
 
-To manage the texts appearing in the various parts of the experience, we implemented a CSS file; both the dissolving transitions in the centre of the screen and the scrolling transitions on the top and the bottom of the page are handled though the [style.css](./public/style.css).
+To give the selection menus and buttons a certain style, we implemented a [CSS file](./public/style.css).
 
 # TEAM
 
