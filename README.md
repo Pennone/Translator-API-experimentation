@@ -50,7 +50,7 @@ The device will need to have touch functionalities and a microphone of course, b
 # STRUCTURE
 
 ![scheme](./assets/readme/Scheme.png)
-![scheme](./assets/readme/struttura.png)
+![scheme](./assets/readme/struttura_1.png)
 
 Here is a scheme of the project and its concept rendition.
 
