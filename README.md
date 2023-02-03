@@ -4,7 +4,7 @@
 
 ### a. Theme
 
-### b. Aim / goal
+### b. Aim
 
 ### c. Concept
 
@@ -14,9 +14,9 @@
 
 ## 3. [CODE](#code)
 
-### a. Speech recognition
+### a. Translator API
 
-### b. Translator API
+### b. Speech recognition
 
 ### c. Syntax analysis
 
