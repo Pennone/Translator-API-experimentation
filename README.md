@@ -24,7 +24,7 @@
 
 ## 4. [TEAM](#team)
 
-![](./assets-readme/looptext.gif)
+![](./assets/readme/title.png)
 
 # PROJECT IDEA
 
@@ -102,8 +102,6 @@ microsoft_translate(sentence, starting_lang, lang_to_translate_to).then((data) =
 ```
 
 We couldnt name the function "translate()" using instead "microsoft_translate()" to avoid conflict with the preexisting p5js function.
-
-![](./assets-readme/blob_avvicinano.gif)
 
 **SPEECH RECOGNITION**
 
