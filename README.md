@@ -51,6 +51,8 @@ The device will need to have touch functionalities and a microphone of course, b
 
 ![scheme](./assets/readme/struttura.png)
 
+Here is a scheme of the project and its concept rendition.
+
 The project is composed of a single HTML page, in which the various parts are set to go off based on timers and the interaction of the user with a button and some drop-down menus.
 
 1. The introduction page invites the user to press the big button on the screen;
