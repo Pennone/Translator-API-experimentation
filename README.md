@@ -107,7 +107,7 @@ We couldnt name the function "translate()" using instead "microsoft_translate()"
 
 **SPEECH RECOGNITION**
 
-[p5 speech](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition; the library has a lot of different functionalities, however we only needed that;
+[p5 speech](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition; the library has a lot of different functionalities, however we only needed that.
 
 **SYNTAX ANALISIS**
 
@@ -158,7 +158,7 @@ For the world map animations, we used a sligtly more complex system, mostly just
 
 ```
 
-To give the selection menus and buttons a certain style, we implemented a [CSS file](./public/style.css).
+To give the selection menus and buttons a certain style, we implemented a [CSS file](./main/style.css).
 
 # TEAM
 
