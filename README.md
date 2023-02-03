@@ -76,7 +76,7 @@ const translate_region       = "switzerlandnorth";
 
 let sentence = "Phrase we need to translate";
 
-async function microsoft_translate(source_text, source_language, target_language) { //using an asyncronous function, that will request the data and wait for it to be sent back
+async function microsoft_translate(source_text, source_language, target_language) { //using an asyncronous function, that will request the data and wait for it to be sent back, without stopping the code from running
   const endpoint = `${translate_api_endpoint}/translate?api-version=${translate_version}&from=${source_language}&to=${target_language}`; // Constructing the URL to send to
   const data_body = [{'text': source_text}]; // Constructing the data to be sent
   const response = await fetch(endpoint, {
