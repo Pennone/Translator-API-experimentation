@@ -60,12 +60,6 @@ The project is composed of a single HTML page, in which the various parts are se
 
 # CODE
 
-**SPEECH RECOGNITION**
-
-[p5 speech](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition.
-
-The library is able to detect quite a few languages, even if we only needed english.
-
 **TRANSLATOR API**
 
 We implemented [Azure translator API](https://azure.microsoft.com/it-it/products/cognitive-services/translator) for the process of translating our main phrase.
@@ -113,24 +107,52 @@ We couldnt name the function "translate()" using instead "microsoft_translate()"
 
 ![](./assets-readme/blob_avvicinano.gif)
 
-**SYNTAX ANALISIS**
+**SPEECH RECOGNITION**
 
-To analize and recognize the elements of a phrase, we used [RiTa.js](https://github.com/dhowe/ritajs), a library that allows a great quantity of operations and analysis on a sentence, related to grammar and syntax.
+[p5 speech](https://idmnyu.github.io/p5.js-speech/) was implemented for speech recognition.
 
-We downloaded the library
+The library is able to detect quite a few languages, even if we only needed english.
 
-```HTML
-<head>
-
-    <script src="libraries/rita.js"></script>
-
-  </head>
-```
-
-and used the function
+We used the function
 
 ```JavaScript
 let words = RiTa.pos(phrase);
+```
+
+**SYNTAX ANALISIS**
+
+To analize and recognize the elements of a phrase, we used [RiTa.js](https://github.com/dhowe/ritajs), a library that allows a great quantity of operations and analysis on a sentence.
+
+We were mainly interested in the function
+
+```JavaScript
+let words = RiTa.pos(phrase);
+```
+
+This is how the two libraries work together
+
+```JavaScript
+  sketch.recording = function () {
+    if (frame == 3 && control == false) {
+      control = true;
+      clicked = true;
+      sketch.speechRec.start();
+    }
+  };
+
+  sketch.gotSpeech = function () {
+    if (sketch.speechRec.resultValue) {
+      let said = sketch.speechRec.resultString;
+      if (said.length <= 7) {
+        phrase = said;
+      } else {
+        phrase = said.split(" ").splice(0, 7).join(" ");
+      }
+      console.log(phrase);
+      analysis = RiTa.pos(phrase);
+      clicked = false;
+      console.log(analysis);
+    }
 ```
 
 to analyze the syntaxis.
